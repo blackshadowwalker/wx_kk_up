@@ -6,6 +6,7 @@
 #include "wx_kk_up.h"
 #include "wx_kk_upDlg.h"
 
+#include "TCode.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -78,6 +79,40 @@ BOOL Cwx_kk_upApp::InitInstance()
 	// TODO: 应适当修改该字符串，
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
+
+
+		
+	//获取控件注册状态
+	char temp[256]={0};
+	HRESULT hr = -1;
+	CLSID clsid = {0};
+	char pClsid[256]={0};
+	LONG lValue = 256;
+	LPWSTR lpClsid;
+	hr = CLSIDFromProgID(  L"HTAgent.HTAgentObj",&clsid);
+	if(hr==S_OK){
+		if( StringFromCLSID( clsid, &lpClsid) == S_OK)
+		{
+			wcharTochar( lpClsid, pClsid);
+			//GetDllPath
+			HKEY hKey;     
+			BOOL bPresent;     
+			TCHAR szPath[MAX_PATH];     
+			DWORD dwRegType;     
+			DWORD cbData   =   sizeof   szPath   *   sizeof   TCHAR;    
+			sprintf(temp, "CLSID\\%s\\InprocServer32",pClsid); 
+			if(RegOpenKeyEx(HKEY_CLASSES_ROOT, temp, 0, KEY_READ,&hKey)==ERROR_SUCCESS){
+				if( RegQueryValue(hKey,NULL, temp, &lValue ) == ERROR_SUCCESS){
+				//	m_dllPath.Format("%s",temp);
+				}
+			}
+		}
+	}else{
+		MessageBox(0,"控件未注册，请先注册控件","系统提示", MB_OK | MB_ICONHAND );
+		WinExec("InstanceConfig.exe",SW_SHOW);
+		::PostQuitMessage(0);
+	}
+
 
 	Cwx_kk_upDlg dlg;
 	m_pMainWnd = &dlg;

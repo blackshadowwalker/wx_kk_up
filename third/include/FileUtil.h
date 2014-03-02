@@ -3,7 +3,7 @@
 /**
 * Auth: Karl
 * Date: 2014/2/20
-* LastUpdate: 2014/2/24
+* LastUpdate: 2014/5/8
 */
 
 #pragma once
@@ -56,7 +56,10 @@ public:
 
 	
 	//弹出选择文件夹对话框
-	static char* SelectFolder(HWND hwnd, char* title="Select Folder", char* dir=0);
+	// outDir:输出路径，not NULL
+	// title: title
+	// orgDir: 初始展开路径
+	static char* SelectFolder(HWND hwnd, char* outDir,  char* title="Select Folder", char* orgDir=0);
 
 	//判断文件/文件夹是否存在
 	//判断文件：	FindFirstFileExists(lpPath, FALSE);  

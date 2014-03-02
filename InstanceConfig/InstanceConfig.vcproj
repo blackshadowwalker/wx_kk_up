@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="wx_kk_up"
-	ProjectGUID="{4606960E-CB10-4583-B98D-B262E00DAF15}"
-	RootNamespace="wx_kk_up"
+	Name="InstanceConfig"
+	ProjectGUID="{D5BAFA24-A735-4E18-91CB-E3FBB8C72679}"
+	RootNamespace="InstanceConfig"
 	Keyword="MFCProj"
 	TargetFrameworkVersion="196613"
 	>
@@ -19,9 +19,9 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="..\bin"
-			IntermediateDirectory="..\bin\mid\Debug\wx_kk_up"
+			IntermediateDirectory="..\bin\mid\InstanceConfig\Debug"
 			ConfigurationType="1"
-			UseOfMFC="1"
+			UseOfMFC="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -44,14 +44,13 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions=" /EHa "
 				Optimization="0"
-				AdditionalIncludeDirectories="..\third\include\mem;..\third\include\pthread;..\zlog;..\third\include;..\third\include\mysql;..\third\include\sqlite;./;..\wxCore"
+				AdditionalIncludeDirectories="..\third\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="4"
 			/>
@@ -69,11 +68,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="mysqllib.lib unixport.lib zlog.lib pthreadVC2.lib wxCore.lib"
-				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\bin\lib"
-				UACExecutionLevel="0"
+				UACExecutionLevel="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -103,9 +99,9 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="..\bin"
-			IntermediateDirectory="..\bin\mid\Debug\wx_kk_up"
+			IntermediateDirectory="..\bin\mid\InstanceConfig\Release"
 			ConfigurationType="1"
-			UseOfMFC="1"
+			UseOfMFC="2"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -129,13 +125,12 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalOptions=" /EHa "
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\third\include\mem;..\third\include\pthread;..\zlog;..\third\include;..\third\include\mysql;..\third\include\sqlite;./;..\wxCore;..\..\ShareModule\ShareModule"
+				AdditionalIncludeDirectories="..\third\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG"
 				MinimalRebuild="false"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -155,9 +150,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="mysqllib.lib unixport.lib zlog.lib pthreadVC2.lib wxCore.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\bin\lib;..\bin"
 				UACExecutionLevel="2"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -197,11 +190,11 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\htagentobj1.cpp"
+				RelativePath=".\InstanceConfig.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\KKConfigDlg.cpp"
+				RelativePath=".\InstanceConfigDlg.cpp"
 				>
 			</File>
 			<File
@@ -224,18 +217,6 @@
 					/>
 				</FileConfiguration>
 			</File>
-			<File
-				RelativePath=".\SystemConfigDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\wx_kk_up.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\wx_kk_upDlg.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
@@ -243,11 +224,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\htagentobj1.h"
+				RelativePath=".\InstanceConfig.h"
 				>
 			</File>
 			<File
-				RelativePath=".\KKConfigDlg.h"
+				RelativePath=".\InstanceConfigDlg.h"
 				>
 			</File>
 			<File
@@ -259,19 +240,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\SystemConfigDlg.h"
-				>
-			</File>
-			<File
 				RelativePath=".\targetver.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wx_kk_up.h"
-				>
-			</File>
-			<File
-				RelativePath=".\wx_kk_upDlg.h"
 				>
 			</File>
 		</Filter>
@@ -281,15 +250,15 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\res\wx_kk_up.ico"
+				RelativePath=".\res\InstanceConfig.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\wx_kk_up.rc"
+				RelativePath=".\InstanceConfig.rc"
 				>
 			</File>
 			<File
-				RelativePath=".\res\wx_kk_up.rc2"
+				RelativePath=".\res\InstanceConfig.rc2"
 				>
 			</File>
 		</Filter>
@@ -297,26 +266,10 @@
 			Name="public"
 			>
 			<File
-				RelativePath="..\third\include\CrashHandler.cpp"
-				>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\third\include\CrashHandler.h"
-				>
-			</File>
-			<File
 				RelativePath="..\third\include\FileUtil.cpp"
 				>
 				<FileConfiguration
-					Name="Debug|Win32"
+					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -329,15 +282,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\third\include\HttpClient.cpp"
+				RelativePath="..\third\include\KService.cpp"
 				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\third\include\HttpClient.h"
-				>
-			</File>
-			<File
-				RelativePath="..\third\include\minGlue.h"
+				RelativePath="..\third\include\KService.h"
 				>
 			</File>
 			<File
@@ -365,24 +322,16 @@
 				>
 			</File>
 			<File
-				RelativePath="..\third\include\ProcessState.cpp"
+				RelativePath="..\third\include\TCode.cpp"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="0"
 					/>
 				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="..\third\include\ProcessState.h"
-				>
-			</File>
-			<File
-				RelativePath="..\third\include\TCode.cpp"
-				>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
@@ -396,30 +345,6 @@
 				RelativePath="..\third\include\TCode.h"
 				>
 			</File>
-			<Filter
-				Name="sqlite"
-				>
-				<File
-					RelativePath="..\third\include\sqlite\sqlite3.c"
-					>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							UsePrecompiledHeader="0"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\third\include\sqlite\sqlite3.h"
-					>
-				</File>
-				<File
-					RelativePath="..\third\include\sqlite\sqlite3ext.h"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
@@ -429,11 +354,7 @@
 	<Globals>
 		<Global
 			Name="RESOURCE_FILE"
-			Value="wx_kk_up.rc"
-		/>
-		<Global
-			Name="{0D681E3B-B2A0-498F-9ADA-0CA206B233A5}"
-			Value="CHtagentobj1"
+			Value="InstanceConfig.rc"
 		/>
 	</Globals>
 </VisualStudioProject>

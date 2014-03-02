@@ -56,3 +56,52 @@ char* strrstr(char* source ,const char* match)
 
     return p;        
 }
+
+//convert wchar_t to char
+// e.g: wcharTochar(wchar, chr, sizeof(chr));  
+void wcharTochar(const wchar_t *wchar, char *chr )
+{  
+	int length = WideCharToMultiByte(CP_ACP, 0, wchar, -1, NULL, 0, NULL, NULL);
+    WideCharToMultiByte( CP_ACP, 0, wchar, -1,  
+        chr, length, NULL, NULL );  
+}  
+
+//convert char to wchar_t 
+// e.g : char = (wchar_t *)malloc(sizeof(wchar_t) * charlength);   \
+		 charTowchar(chr, wchar, sizeof(wchar_t) * charlength);  
+void charTowchar(const char *chr, wchar_t *wchar)
+{     
+	int length = MultiByteToWideChar(CP_ACP, 0, chr, -1, NULL, 0);
+    MultiByteToWideChar( CP_ACP, 0, chr,  
+        strlen(chr)+1, wchar, length/sizeof(wchar[0]) );  
+}  
+
+/*********************************************************************   
+**   从系统中取最后一次错误代码，并转换成字符串返回   
+*********************************************************************/   
+LPTSTR   GetLastErrorText( long lErrorCode,  LPTSTR   lpszBuf,   DWORD   dwSize   )     
+{   
+	DWORD   dwRet;   
+	LPTSTR   lpszTemp   =   NULL;   
+
+	dwRet   =   FormatMessage(   FORMAT_MESSAGE_ALLOCATE_BUFFER|FORMAT_MESSAGE_FROM_SYSTEM|FORMAT_MESSAGE_ARGUMENT_ARRAY,   
+		NULL,   
+		lErrorCode,   
+		LANG_NEUTRAL,   
+		(LPTSTR)&lpszTemp,   
+		0,   
+		NULL   );   
+
+	//   supplied   buffer   is   not   long   enough   
+	if(!dwRet||((long)dwSize<(long)dwRet+14))   
+		lpszBuf[0]   =   TEXT('\0');   
+	else{   
+		lpszTemp[lstrlen(lpszTemp)-2]   =   TEXT('\0');     //remove   cr   and   newline   character   
+		sprintf(   lpszBuf,   TEXT("%s   (%ld)"),   lpszTemp,   GetLastError()   );   
+	}   
+
+	if   (   lpszTemp   )   
+		LocalFree((HLOCAL)   lpszTemp   );   
+
+	return   lpszBuf;   
+}  

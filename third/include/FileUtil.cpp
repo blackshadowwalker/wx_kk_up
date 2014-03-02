@@ -4,7 +4,7 @@
 /**
 * Auth: Karl
 * Date: 2014/2/20
-* LastUpdate: 2014/2/24
+* LastUpdate:2014/5/8
 */
 #include "stdafx.h"
 
@@ -218,10 +218,12 @@ int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg,LPARAM lParam,LPARAM lpData)
 #ifndef BIF_NEWDIALOGSTYLE
 #define BIF_NEWDIALOGSTYLE 0x0040
 #endif
-char* FileUtil::SelectFolder(HWND hwnd, char* title, char* dir)
+char* FileUtil::SelectFolder(HWND hwnd, char* outDir, char* title, char* orgDir)
 {
-	char *szFolder = new char[MAX_PATH]; //得到文件路径	
-	memset(szFolder, 0, MAX_PATH);
+	char *szFolder = outDir; //new char[MAX_PATH]; //得到文件路径	
+	if(szFolder==0)
+		return 0;
+//	memset(szFolder, 0, MAX_PATH);
 
 	//HWND hwnd = hWnd->GetSafeHwnd();   //得到窗口句柄
 #ifdef _SHGetMalloc_  
@@ -264,10 +266,10 @@ char* FileUtil::SelectFolder(HWND hwnd, char* title, char* dir)
 	//添加新建文件夹按钮 BIF_NEWDIALOGSTYLE
 	bi.ulFlags			=  BIF_NEWDIALOGSTYLE | BIF_RETURNONLYFSDIRS | BIF_RETURNFSANCESTORS | BIF_EDITBOX;
 	bi.iImage			= 0;
-	if(dir!=0)
+	if(orgDir!=0)
 	{
 		bi.lpfn				= BrowseCallbackProc;
-		bi.lParam			= (LPARAM)(LPCTSTR)dir;
+		bi.lParam			= (LPARAM)(LPCTSTR)orgDir;
 	}else{
 		bi.lpfn				= 0;
 		bi.lParam			= 0;
@@ -285,8 +287,9 @@ char* FileUtil::SelectFolder(HWND hwnd, char* title, char* dir)
 	}  
 	else 
 	{  
-		delete szFolder;
-		szFolder = 0;
+	//	delete szFolder;
+	//	szFolder = 0;
+		goto end;
 	  //	MessageBox(NULL,TEXT("EMPTY"),TEXT("Choose"),MB_OK);  
 	}  
 	CoTaskMemFree(pidl);  
@@ -294,6 +297,8 @@ char* FileUtil::SelectFolder(HWND hwnd, char* title, char* dir)
 #endif  
 
 	return szFolder;
+end:
+	return NULL;
 }
 
 

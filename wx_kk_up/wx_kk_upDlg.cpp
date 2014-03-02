@@ -8,6 +8,9 @@
 
 #include "stdio.h"
 #include  <io.h>
+#include "time.h"
+
+//#include "ShareModule.h"
 
 #include "minIni.h"
 
@@ -17,6 +20,12 @@
 #include "HttpClient.h"
 #include "TCode.h"
 
+
+
+#if _MSC_VER
+#define snprintf _snprintf
+#endif
+ 
 
 //特征图片后缀标志(号牌图片)
 #define PLATE_END  "_plate.jpg"
@@ -116,6 +125,7 @@ Cwx_kk_upDlg::Cwx_kk_upDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(Cwx_kk_upDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+
 }
 Cwx_kk_upDlg::~Cwx_kk_upDlg()
 {
@@ -716,7 +726,7 @@ long  ParseVehicleFromPicture(KKConfig kkConfig, char *imagePath, VehicleInfo &v
 	sprintf(vehicleInfo.fzhphm, "-");//辅助号牌号码	无牌、未识别、无法识别均用半角“-”表示，其中无号牌要注意hpzl填41
 	
 	sprintf(vehicleInfo.csys, "-");//车身颜色
-	sprintf(vehicleInfo.tplj,"%s/", kkConfig.httpPath);//通行图片路径  固定部分
+	sprintf(vehicleInfo.tplj,"%s", kkConfig.http);//通行图片路径  固定部分
 	sprintf(vehicleInfo.tp1, "%s",imagePath);//通行图片1  变化的部分
 	sprintf(vehicleInfo.tztp, "%s_plate.jpg",imagePath);//通行图片1  变化的部分
 
@@ -970,6 +980,11 @@ end:
 }
 
 
+typedef void (*_UpdateShareTime)(); //宏定义函数指针类型
+typedef time_t (*_GetNowTime)();
+typedef time_t (*_GetShareTime)();
+
+
 //系统资源监控
 void* ProcessMonitorThread(void *pParam)
 {
@@ -984,6 +999,31 @@ start:
 	int cpu =0;
 	int ret=0;
 	char tempsize[64]={0};
+	time_t t=0;
+
+	time_t	ShareTime = 0;
+	time_t	NowTime = 0;
+	char	pNowTime[64] = {0}; 
+	char	pShareTime[64] = {0}; 
+
+	HINSTANCE hDll; //DLL句柄 
+	_UpdateShareTime	UpdateShareTime; //函数指针
+	_GetNowTime			GetNowTime;
+	_GetShareTime		GetShareTime;
+	hDll = LoadLibrary("ShareModule.dll");
+	if (hDll == NULL){
+		dzlog_error(" hDll = LoadLibrary(ShareModule.dll) failed");
+		return 0;
+	}
+
+	UpdateShareTime = (_UpdateShareTime)GetProcAddress(hDll, "UpdateShareTime");
+	if (UpdateShareTime == NULL){
+		FreeLibrary(hDll);
+		dzlog_error(" hDll = GetProcAddress(UpdateShareTime) failed");
+		return 0;
+	}
+	GetNowTime = (_GetNowTime)GetProcAddress(hDll, "GetNowTime");
+	GetShareTime  = (_GetShareTime)GetProcAddress(hDll, "GetShareTime");
 
 	try
 	{
@@ -991,6 +1031,21 @@ start:
 		{
 			if(m_ExitCode==1)
 				goto end;
+
+		//	UpdateShareTime();//设置存活时间
+
+			NowTime = GetNowTime();
+			sprintf(pNowTime,"%s", asctime(localtime(&NowTime)));
+			if( strlen(pNowTime) > 2)
+				pNowTime[strlen(pNowTime)-1] = '\0';
+
+			ShareTime = GetShareTime();
+			sprintf(pShareTime,"%s", asctime(localtime(&ShareTime)));
+			if( strlen(pShareTime) > 2)
+				pShareTime[strlen(pShareTime)-1] = '\0';
+
+			sprintf(errorInfo, "ShareTime = %d [ %s ]  NowTime = %d [ %s ]  diff = %d ", (long)ShareTime, pShareTime, (long)NowTime, pNowTime, NowTime-ShareTime );
+		//	dlg->GetDlgItem(ID_PROCESS_STATE)->SetWindowText(errorInfo);
 
 			cpu = get_cpu_usage();
 			ret = get_memory_usage( &mem, &vmem);

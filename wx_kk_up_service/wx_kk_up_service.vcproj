@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="mysqllib"
-	ProjectGUID="{7BE43C5D-DA0E-4CFD-9548-CCA59B842208}"
-	RootNamespace="mysqllib"
+	Name="wx_kk_up_service"
+	ProjectGUID="{41046787-330C-409D-B04B-BE6FEED406DF}"
+	RootNamespace="wx_kk_up_service"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -18,11 +18,10 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\lib"
-			IntermediateDirectory="..\bin\mid\debug\mysqllib"
-			ConfigurationType="4"
-			CharacterSet="2"
-			EnableManagedIncrementalBuild="0"
+			OutputDirectory="..\..\wx_kk_up\bin"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
+			CharacterSet="0"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -42,12 +41,11 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\third\include\mysql"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_WIN32;_CRT_SECURE_NO_WARNINGS;_USE_32BIT_TIME_T"
+				AdditionalIncludeDirectories="..\..\ShareModule\ShareModule"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				StructMemberAlignment="0"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -62,11 +60,19 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\..\bin\lib\mysqllib.lib"
+				Name="VCLinkerTool"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\wx_kk_up\bin"
+				UACExecutionLevel="2"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -78,15 +84,18 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\bin\lib"
-			IntermediateDirectory="..\bin\mid\debug\mysqllib"
-			ConfigurationType="4"
-			CharacterSet="2"
+			OutputDirectory="..\bin"
+			IntermediateDirectory="..\bin\mid\Release\wx_kk_up_service"
+			ConfigurationType="1"
+			CharacterSet="0"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -106,19 +115,15 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="4"
-				EnableIntrinsicFunctions="false"
-				FavorSizeOrSpeed="1"
-				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="..\third\include\mysql"
-				PreprocessorDefinitions="WIN32;_NDEBUG;_LIB;_WIN32;_CRT_SECURE_NO_WARNINGS"
-				ExceptionHandling="2"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="0"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="..\..\ShareModule\ShareModule"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
+				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				DebugInformationFormat="4"
+				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -130,10 +135,21 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
+				Name="VCLinkerTool"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				UACExecutionLevel="2"
+				GenerateDebugInformation="true"
+				SubSystem="1"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -145,6 +161,9 @@
 				Name="VCFxCopTool"
 			/>
 			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -153,87 +172,35 @@
 	</References>
 	<Files>
 		<Filter
-			Name="Source Files"
+			Name="源文件"
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Database.cpp"
+				RelativePath=".\main.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\enum_t.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Query.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\set_t.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\StderrLog.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SysLog.cpp"
+				RelativePath=".\wx_kk_service.cpp"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="Header Files"
+			Name="头文件"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\config-win.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Database.h"
-				>
-			</File>
-			<File
-				RelativePath=".\enum_t.h"
-				>
-			</File>
-			<File
-				RelativePath=".\IError.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Query.h"
-				>
-			</File>
-			<File
-				RelativePath=".\set_t.h"
-				>
-			</File>
-			<File
-				RelativePath=".\StderrLog.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SysLog.h"
+				RelativePath=".\wx_kk_service.h"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="Resource Files"
+			Name="资源文件"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
-		<File
-			RelativePath="..\CxImage\cximage.vcproj"
-			>
-		</File>
-		<File
-			RelativePath=".\ReadMe.txt"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>
