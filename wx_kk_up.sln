@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wx_kk_up", "wx_kk_up\wx_kk_up.vcproj", "{4606960E-CB10-4583-B98D-B262E00DAF15}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5323543A-C61F-480D-8127-1EFED685ECF6} = {5323543A-C61F-480D-8127-1EFED685ECF6}
+		{7BE43C5D-DA0E-4CFD-9548-CCA59B842208} = {7BE43C5D-DA0E-4CFD-9548-CCA59B842208}
+		{47AE5BED-E584-4A59-9045-9A26BB2965AD} = {47AE5BED-E584-4A59-9045-9A26BB2965AD}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mysqllib", "mysqllib\mysqllib.vcproj", "{7BE43C5D-DA0E-4CFD-9548-CCA59B842208}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unixport", "unixport\unixport.vcproj", "{6D33560D-313E-46E6-860E-064B9495CA5F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlog", "zlog\zlog.vcproj", "{5323543A-C61F-480D-8127-1EFED685ECF6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6D33560D-313E-46E6-860E-064B9495CA5F} = {6D33560D-313E-46E6-860E-064B9495CA5F}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wxCore", "wxCore\wxCore.vcproj", "{47AE5BED-E584-4A59-9045-9A26BB2965AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4606960E-CB10-4583-B98D-B262E00DAF15}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4606960E-CB10-4583-B98D-B262E00DAF15}.Debug|Win32.Build.0 = Debug|Win32
+		{4606960E-CB10-4583-B98D-B262E00DAF15}.Release|Win32.ActiveCfg = Release|Win32
+		{4606960E-CB10-4583-B98D-B262E00DAF15}.Release|Win32.Build.0 = Release|Win32
+		{7BE43C5D-DA0E-4CFD-9548-CCA59B842208}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7BE43C5D-DA0E-4CFD-9548-CCA59B842208}.Debug|Win32.Build.0 = Debug|Win32
+		{7BE43C5D-DA0E-4CFD-9548-CCA59B842208}.Release|Win32.ActiveCfg = Release|Win32
+		{7BE43C5D-DA0E-4CFD-9548-CCA59B842208}.Release|Win32.Build.0 = Release|Win32
+		{6D33560D-313E-46E6-860E-064B9495CA5F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6D33560D-313E-46E6-860E-064B9495CA5F}.Debug|Win32.Build.0 = Debug|Win32
+		{6D33560D-313E-46E6-860E-064B9495CA5F}.Release|Win32.ActiveCfg = Release|Win32
+		{6D33560D-313E-46E6-860E-064B9495CA5F}.Release|Win32.Build.0 = Release|Win32
+		{5323543A-C61F-480D-8127-1EFED685ECF6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5323543A-C61F-480D-8127-1EFED685ECF6}.Debug|Win32.Build.0 = Debug|Win32
+		{5323543A-C61F-480D-8127-1EFED685ECF6}.Release|Win32.ActiveCfg = Release|Win32
+		{5323543A-C61F-480D-8127-1EFED685ECF6}.Release|Win32.Build.0 = Release|Win32
+		{47AE5BED-E584-4A59-9045-9A26BB2965AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{47AE5BED-E584-4A59-9045-9A26BB2965AD}.Debug|Win32.Build.0 = Debug|Win32
+		{47AE5BED-E584-4A59-9045-9A26BB2965AD}.Release|Win32.ActiveCfg = Release|Win32
+		{47AE5BED-E584-4A59-9045-9A26BB2965AD}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

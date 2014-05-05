@@ -1,0 +1,627 @@
+﻿
+Revision: 24
+Author: karl.li
+Date: 2014年5月5日 15:20:28
+Message:
+加入上传特征图片(号牌图片)
+----
+Modified : /bin/wx_kk_up.db
+Modified : /bin/wx_kk_up.ini
+Modified : /mysqllib/mysqllib.vcproj
+Modified : /third/include/TCode.cpp
+Modified : /third/include/TCode.h
+Modified : /wxCore/tfcommon.h
+Modified : /wxCore/wxCore.vcproj
+Modified : /wx_kk_up/KKConfigDlg.cpp
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 23
+Author: karl.li
+Date: 2014年5月5日 9:23:50
+Message:
+使用手册加入配置简要说明
+----
+Modified : /bin/信帧卡口系统-无锡测试使用手册.docx
+
+Revision: 22
+Author: karl.li
+Date: 2014年5月4日 18:06:37
+Message:
+完成100%，完成解析文件名称并填充车辆信息结构 ParseVehicleFromPicture()
+下一步：
+1.编写服务监控程序(保活程序)
+----
+Modified : /bin/wx_kk_up.db
+Modified : /wxCore/DB.cpp
+Modified : /wxCore/DB.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 21
+Author: karl.li
+Date: 2014年5月4日 16:01:54
+Message:
+修改退出代码
+::PostQuitMessage(0)
+----
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 20
+Author: karl.li
+Date: 2014年5月4日 15:41:57
+Message:
+add 信帧卡口系统-无锡测试使用手册.docx
+----
+Added : /bin/信帧卡口系统-无锡测试使用手册.docx
+Modified : /svn.log.txt
+
+
+Revision: 19
+Author: karl.li
+Date: 2014年5月4日 15:26:38
+Message:
+完成95%，监控与上传均已完成，只剩解析文件名称并填充车辆信息结构
+下一步：
+1. 编写车牌分析程序(分析视频)
+2. 解析文件名称并填充车辆信息结构 ParseVehicleFromPicture()
+3. 编写服务监控程序(保活程序)
+----
+Added : /bin/AgentError.dat
+Modified : /bin/logcfg.conf
+Modified : /bin/wx_kk_up.db
+Modified : /bin/wx_kk_up.ini
+Added : /third/include/HttpClient.cpp
+Added : /third/include/HttpClient.h
+Modified : /third/include/ProcessState.cpp
+Modified : /third/include/ProcessState.h
+Modified : /wxCore/DB.h
+Modified : /wxCore/tfcommon.h
+Modified : /wx_kk_up/KKConfigDlg.cpp
+Modified : /wx_kk_up/KKConfigDlg.h
+Modified : /wx_kk_up/Resource.h
+Modified : /wx_kk_up/SystemConfigDlg.cpp
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+
+Revision: 18
+Author: karl.li
+Date: 2014年5月3日 19:50:57
+Message:
+自动监控搞定
+下一步：
+1.用卡口系统分析视频并输出图片(格式化文件名)
+2.解析文件名并写入结构体
+----
+Modified : /bin/wx_kk_up.db
+Modified : /bin/wx_kk_up.ini
+Modified : /third/include/FileUtil.cpp
+Modified : /third/include/FileUtil.h
+Modified : /wxCore/DB.cpp
+Modified : /wxCore/DB.h
+Modified : /wxCore/tfcommon.h
+Modified : /wx_kk_up/KKConfigDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+Modified : /zlog/rule.c
+
+Revision: 17
+Author: karl.li
+Date: 2014年4月28日 18:38:56
+Message:
+
+----
+Modified : /bin/wx_kk_up.db
+Modified : /wxCore/DB.cpp
+Modified : /wxCore/DB.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /zlog/rule.c
+Modified : /zlog/zlog.c
+Modified : /zlog/zlog.h
+
+Revision: 16
+Author: karl.li
+Date: 2014年4月28日 17:07:11
+Message:
+设置zlog显示过滤
+重点：
+typedef enum {
+	ZLOG_LEVEL_DEBUG = 0x0001<<4, // 20,
+	ZLOG_LEVEL_INFO = 0x0001<<5, //40,
+	ZLOG_LEVEL_NOTICE = 0x0001<<6, // 60,
+	ZLOG_LEVEL_WARN = 0x0001<<7, //80,
+	ZLOG_LEVEL_ERROR = 0x0001<<8, //100,
+	ZLOG_LEVEL_FATAL = 0x0001<<9 //120
+} zlog_level; 
+----
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 15
+Author: karl.li
+Date: 2014年4月28日 16:43:14
+Message:
+修改zlog，通知界面并显示
+----
+Modified : /wxCore/tfcommon.h
+Modified : /wx_kk_up/Resource.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+Modified : /zlog/rule.c
+Modified : /zlog/zc_defs.h
+Modified : /zlog/zlog.c
+Modified : /zlog/zlog.h
+Modified : /zlog/zlog.vcproj
+
+Revision: 14
+Author: karl.li
+Date: 2014年4月28日 15:41:48
+Message:
+监控到的数据成功写入数据库
+----
+Modified : /bin/wx_kk_up.db
+Modified : /bin/wx_kk_up.ini
+Modified : /wxCore/DB.cpp
+Modified : /wxCore/DB.h
+Modified : /wxCore/wxCore.h
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+
+Revision: 13
+Author: karl.li
+Date: 2014年4月28日 15:10:13
+Message:
+加入sqlite操作
+DB.h  DB.cpp
+----
+Added : /svn.log.txt
+Modified : /third/include/FileUtil.cpp
+Modified : /third/include/FileUtil.h
+Modified : /third/include/TCode.h
+Added : /wxCore/DB.cpp
+Added : /wxCore/DB.h
+Added : /wxCore/tfcommon.h
+Modified : /wxCore/wxCore.h
+Modified : /wxCore/wxCore.vcproj
+Modified : /wx_kk_up/stdafx.h
+Modified : /wx_kk_up/wx_kk_up.h
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 12
+Author: karl.li
+Date: 2014年4月28日 10:24:06
+Message:
+1.接入httpPath的配置
+2.修复ErrorSum的长度未加1的bug
+----
+Modified : /wx_kk_up/KKConfigDlg.cpp
+Modified : /wx_kk_up/KKConfigDlg.h
+Modified : /wx_kk_up/Resource.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 11
+Author: karl.li
+Date: 2014年4月28日 10:01:31
+Message:
+加入车辆信息结构VehicleInfo和数据库sqlite.db
+----
+Added : /bin/wx_kk_up.db
+Modified : /wx_kk_up/SystemConfigDlg.cpp
+Modified : /wx_kk_up/stdafx.h
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+
+Revision: 10
+Author: karl.li
+Date: 2014年4月27日 20:12:20
+Message:
+1.完成了文件监控,到队列
+2.处理队列文件，复制到http目录下
+3.加入LastError
+----
+Added : /bin/GetLastError.dat
+Modified : /bin/wx_kk_up.ini
+Modified : /third/include/FileUtil.cpp
+Modified : /third/include/FileUtil.h
+Modified : /wx_kk_up/KKConfigDlg.cpp
+Modified : /wx_kk_up/Resource.h
+Modified : /wx_kk_up/stdafx.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+
+Revision: 9
+Author: karl.li
+Date: 2014年4月27日 16:57:38
+Message:
+修改Readme
+
+----
+Modified : /Readme.txt
+
+Revision: 8
+Author: karl.li
+Date: 2014年4月27日 16:49:34
+Message:
+加入  余留文件处理线程
+----
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 7
+Author: karl.li
+Date: 2014年4月27日 16:19:39
+Message:
+运用pthread创建了4个线程进行数据处理
+下一步：
+加入处理代码
+----
+Modified : /bin/wx_kk_up.ini
+Modified : /third/include/FileUtil.cpp
+Modified : /third/include/FileUtil.h
+Modified : /wx_kk_up/KKConfigDlg.cpp
+Modified : /wx_kk_up/Resource.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+
+Revision: 6
+Author: karl.li
+Date: 2014年4月26日 19:02:11
+Message:
+完成了卡口配置
+下一步：
+监控目录(Thread)
+----
+Modified : /bin/wx_kk_up.ini
+Modified : /wx_kk_up/KKConfigDlg.cpp
+Modified : /wx_kk_up/KKConfigDlg.h
+Modified : /wx_kk_up/wx_kk_up.aps
+
+Revision: 5
+Author: karl.li
+Date: 2014年4月26日 18:47:59
+Message:
+1.加入菜单
+2.完成ReadConfig()和SaveConfig()
+3.完成系统配置
+4.加入了卡口配置，完成度50%
+下一步：
+1.完成卡口配置
+2.监控目录(Thread)
+----
+Modified : /bin/logcfg.conf
+Modified : /bin/wx_kk_up.ini
+Added : /third/include/cjson
+Added : /third/include/cjson/LICENSE
+Added : /third/include/cjson/README
+Added : /third/include/cjson/cJSON.c
+Added : /third/include/cjson/cJSON.h
+Added : /third/include/cjson/test.c
+Added : /wx_kk_up/KKConfigDlg.cpp
+Added : /wx_kk_up/KKConfigDlg.h
+Modified : /wx_kk_up/Resource.h
+Added : /wx_kk_up/SystemConfigDlg.cpp
+Added : /wx_kk_up/SystemConfigDlg.h
+Added : /wx_kk_up/htagentobj1.cpp
+Added : /wx_kk_up/htagentobj1.h
+Modified : /wx_kk_up/res/wx_kk_up.ico
+Modified : /wx_kk_up/stdafx.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.cpp
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+
+Revision: 4
+Author: karl.li
+Date: 2014年4月25日 18:48:40
+Message:
+加入Init();
+ReadConfig();
+----
+Modified : /wx_kk_up/Resource.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.cpp
+Modified : /wx_kk_up/wx_kk_up.rc
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up/wx_kk_upDlg.h
+Added : /third/include/minGlue.h
+Modified : /third/include/minIni.c
+Modified : /wx_kk_up/wx_kk_up.h
+
+Revision: 3
+Author: karl.li
+Date: 2014年4月25日 17:42:55
+Message:
+引入sqlite3和mysql
+----
+Modified : /wx_kk_up/wx_kk_up.cpp
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /Readme.txt
+Modified : /third/include/CrashHandler.cpp
+
+Revision: 2
+Author: karl.li
+Date: 2014年4月25日 17:38:23
+Message:
+加入了zlog和CCrashHandler
+1.正常产生zlog日志
+2.利用给*p空指针负值，CrashHandler成功产生crashdump.dmp，调试dmp可成功看到出错代码位置
+----
+Modified : /wx_kk_up/stdafx.h
+Modified : /wx_kk_up/wx_kk_up.cpp
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_up.h
+Modified : /Readme.txt
+Added : /third/include/CrashHandler.cpp
+Added : /bin/lib/pthreadVC2.lib
+Added : /bin/pthreadVC2.dll
+Added : /third/include/CrashHandler.h
+
+Revision: 1
+Author: karl.li
+Date: 2014年4月25日 16:21:37
+Message:
+无锡卡口测试-卡口系统自动上传稽查布控系统
+----
+Added : /bin
+Added : /bin/logcfg.conf
+Added : /bin/wx_kk_up.ini
+Added : /third
+Added : /third/include
+Added : /wx_kk_up
+Added : /wx_kk_up/Resource.h
+Added : /wx_kk_up/res
+Added : /wx_kk_up/res/wx_kk_up.ico
+Added : /wx_kk_up/stdafx.h
+Added : /wx_kk_up/wx_kk_up.aps
+Added : /wx_kk_up/wx_kk_up.cpp
+Added : /wx_kk_up/wx_kk_up.rc
+Added : /wx_kk_up/wx_kk_up.vcproj
+Added : /wx_kk_up/wx_kk_upDlg.cpp
+Added : /wx_kk_up/wx_kk_upDlg.h
+Added : /third/include/minIni.c
+Added : /wx_kk_up/wx_kk_up.h
+Added : /Readme.txt
+Added : /bin/lib
+Added : /ClearTempFiles.bat
+Added : /bin/mid
+Added : /mysqllib
+Added : /mysqllib/Database.cpp
+Added : /mysqllib/Database.h
+Added : /mysqllib/IError.h
+Added : /mysqllib/Query.cpp
+Added : /mysqllib/Query.h
+Added : /mysqllib/ReadMe.txt
+Added : /mysqllib/StderrLog.cpp
+Added : /mysqllib/StderrLog.h
+Added : /mysqllib/SysLog.cpp
+Added : /mysqllib/SysLog.h
+Added : /mysqllib/config-win.h
+Added : /mysqllib/enum_t.cpp
+Added : /mysqllib/enum_t.h
+Added : /mysqllib/mysqllib.vcproj
+Added : /mysqllib/set_t.cpp
+Added : /mysqllib/set_t.h
+Added : /third/include/FileUtil.cpp
+Added : /third/include/FileUtil.h
+Added : /third/include/LPRDB.cpp
+Added : /third/include/LPRDB.h
+Added : /third/include/ProcessState.cpp
+Added : /third/include/ProcessState.h
+Added : /third/include/TCode.cpp
+Added : /third/include/TCode.h
+Added : /third/include/md5.cpp
+Added : /third/include/md5.h
+Added : /third/include/mem
+Added : /third/include/mem/MemLeak.cpp
+Added : /third/include/mem/MemLeak.h
+Added : /third/include/mem/bsearch.c
+Added : /third/include/mem/bsearch.h
+Added : /third/include/mem/list.c
+Added : /third/include/mem/list.h
+Added : /third/include/mem/mempool.c
+Added : /third/include/mem/mempool.h
+Added : /third/include/minIni.h
+Added : /third/include/mysql
+Added : /third/include/mysql/decimal.h
+Added : /third/include/mysql/errmsg.h
+Added : /third/include/mysql/keycache.h
+Added : /third/include/mysql/m_ctype.h
+Added : /third/include/mysql/m_string.h
+Added : /third/include/mysql/my_alloc.h
+Added : /third/include/mysql/my_attribute.h
+Added : /third/include/mysql/my_compiler.h
+Added : /third/include/mysql/my_config.h
+Added : /third/include/mysql/my_dbug.h
+Added : /third/include/mysql/my_dir.h
+Added : /third/include/mysql/my_getopt.h
+Added : /third/include/mysql/my_global.h
+Added : /third/include/mysql/my_list.h
+Added : /third/include/mysql/my_net.h
+Added : /third/include/mysql/my_pthread.h
+Added : /third/include/mysql/my_sys.h
+Added : /third/include/mysql/my_xml.h
+Added : /third/include/mysql/mysql
+Added : /third/include/mysql/mysql/client_plugin.h
+Added : /third/include/mysql/mysql/innodb_priv.h
+Added : /third/include/mysql/mysql/plugin.h
+Added : /third/include/mysql/mysql/plugin_audit.h
+Added : /third/include/mysql/mysql/plugin_auth.h
+Added : /third/include/mysql/mysql/plugin_auth_common.h
+Added : /third/include/mysql/mysql/plugin_ftparser.h
+Added : /third/include/mysql/mysql/psi
+Added : /third/include/mysql/mysql/psi/mysql_file.h
+Added : /third/include/mysql/mysql/psi/mysql_thread.h
+Added : /third/include/mysql/mysql/psi/psi.h
+Added : /third/include/mysql/mysql/psi/psi_abi_v1.h
+Added : /third/include/mysql/mysql/psi/psi_abi_v2.h
+Added : /third/include/mysql/mysql/service_my_snprintf.h
+Added : /third/include/mysql/mysql/service_thd_alloc.h
+Added : /third/include/mysql/mysql/service_thd_wait.h
+Added : /third/include/mysql/mysql/service_thread_scheduler.h
+Added : /third/include/mysql/mysql/services.h
+Added : /third/include/mysql/mysql/thread_pool_priv.h
+Added : /third/include/mysql/mysql.h
+Added : /third/include/mysql/mysql_com.h
+Added : /third/include/mysql/mysql_embed.h
+Added : /third/include/mysql/mysql_time.h
+Added : /third/include/mysql/mysql_version.h
+Added : /third/include/mysql/mysqld_ername.h
+Added : /third/include/mysql/mysqld_error.h
+Added : /third/include/mysql/plugin.h
+Added : /third/include/mysql/plugin_audit.h
+Added : /third/include/mysql/plugin_ftparser.h
+Added : /third/include/mysql/sql_common.h
+Added : /third/include/mysql/sql_state.h
+Added : /third/include/mysql/sslopt-case.h
+Added : /third/include/mysql/sslopt-longopts.h
+Added : /third/include/mysql/sslopt-vars.h
+Added : /third/include/mysql/typelib.h
+Added : /third/include/pthread
+Added : /third/include/pthread/pthread.h
+Added : /third/include/pthread/sched.h
+Added : /third/include/pthread/semaphore.h
+Added : /third/include/public.cpp
+Added : /third/include/public.h
+Added : /third/include/sqlite
+Added : /third/include/sqlite/sqlite3.c
+Added : /third/include/sqlite/sqlite3.h
+Added : /third/include/sqlite/sqlite3ext.h
+Added : /unixport
+Added : /unixport/include
+Added : /unixport/include/arpa
+Added : /unixport/include/arpa/inet.h
+Added : /unixport/include/asm
+Added : /unixport/include/asm/atomic.h
+Added : /unixport/include/dirent.h
+Added : /unixport/include/dlfcn.h
+Added : /unixport/include/glob.h
+Added : /unixport/include/netinet
+Added : /unixport/include/netinet/in.h
+Added : /unixport/include/sys
+Added : /unixport/include/sys/mman.h
+Added : /unixport/include/sys/resource.h
+Added : /unixport/include/sys/select.h
+Added : /unixport/include/sys/socket.h
+Added : /unixport/include/sys/time.h
+Added : /unixport/include/sys/uio.h
+Added : /unixport/include/unistd.h
+Added : /unixport/include/unixport
+Added : /unixport/include/unixport/arpa
+Added : /unixport/include/unixport/arpa/inet.h
+Added : /unixport/include/unixport/asm
+Added : /unixport/include/unixport/asm/atomic.h
+Added : /unixport/include/unixport/dirent.h
+Added : /unixport/include/unixport/dlfcn.h
+Added : /unixport/include/unixport/glob.h
+Added : /unixport/include/unixport/glob_unixem.h
+Added : /unixport/include/unixport/implicit_link.h
+Added : /unixport/include/unixport/internal
+Added : /unixport/include/unixport/internal/safestr.h
+Added : /unixport/include/unixport/internal/util.h
+Added : /unixport/include/unixport/internal/winsock.h
+Added : /unixport/include/unixport/netinet
+Added : /unixport/include/unixport/netinet/in.h
+Added : /unixport/include/unixport/setenv.h
+Added : /unixport/include/unixport/sys
+Added : /unixport/include/unixport/sys/mman.h
+Added : /unixport/include/unixport/sys/resource.h
+Added : /unixport/include/unixport/sys/socket.h
+Added : /unixport/include/unixport/sys/time.h
+Added : /unixport/include/unixport/sys/uio.h
+Added : /unixport/include/unixport/unistd.h
+Added : /unixport/include/unixport/unixem.h
+Added : /unixport/src
+Added : /unixport/src/dirent.c
+Added : /unixport/src/glob.c
+Added : /unixport/src/hostname.c
+Added : /unixport/src/time.c
+Added : /unixport/src/unistd.c
+Added : /unixport/src/util.c
+Added : /unixport/unixport.vcproj
+Added : /wxCore
+Added : /wxCore/HTAgentService.cpp
+Added : /wxCore/HTAgentService.h
+Added : /wxCore/wxCore.cpp
+Added : /wxCore/wxCore.h
+Added : /wxCore/wxCore.vcproj
+Added : /wx_kk_up/ReadMe.txt
+Added : /wx_kk_up/res/wx_kk_up.rc2
+Added : /wx_kk_up/stdafx.cpp
+Added : /wx_kk_up/targetver.h
+Added : /wx_kk_up.sln
+Added : /zlog
+Added : /zlog/ReadMe.txt
+Added : /zlog/buf.c
+Added : /zlog/buf.h
+Added : /zlog/category.c
+Added : /zlog/category.h
+Added : /zlog/category_table.c
+Added : /zlog/category_table.h
+Added : /zlog/conf.c
+Added : /zlog/conf.h
+Added : /zlog/event.c
+Added : /zlog/event.h
+Added : /zlog/fmacros.h
+Added : /zlog/format.c
+Added : /zlog/format.h
+Added : /zlog/glob.c
+Added : /zlog/level.c
+Added : /zlog/level.h
+Added : /zlog/level_list.c
+Added : /zlog/level_list.h
+Added : /zlog/makefile
+Added : /zlog/mdc.c
+Added : /zlog/mdc.h
+Added : /zlog/mk_release.sh
+Added : /zlog/record.c
+Added : /zlog/record.h
+Added : /zlog/record_table.c
+Added : /zlog/record_table.h
+Added : /zlog/release.c
+Added : /zlog/release.h
+Added : /zlog/rotater.c
+Added : /zlog/rotater.h
+Added : /zlog/rule.c
+Added : /zlog/rule.h
+Added : /zlog/spec.c
+Added : /zlog/spec.h
+Added : /zlog/stdint.h
+Added : /zlog/syslog-client.c
+Added : /zlog/syslog.h
+Added : /zlog/thread.c
+Added : /zlog/thread.h
+Added : /zlog/thread_list.c
+Added : /zlog/thread_list.h
+Added : /zlog/win_compat.c
+Added : /zlog/zc_arraylist.c
+Added : /zlog/zc_arraylist.h
+Added : /zlog/zc_defs.h
+Added : /zlog/zc_hashtable.c
+Added : /zlog/zc_hashtable.h
+Added : /zlog/zc_profile.c
+Added : /zlog/zc_profile.h
+Added : /zlog/zc_util.c
+Added : /zlog/zc_util.h
+Added : /zlog/zc_xplatform.h
+Added : /zlog/zlog-chk-conf.c
+Added : /zlog/zlog.c
+Added : /zlog/zlog.h
+Added : /zlog/zlog.vcproj
+
