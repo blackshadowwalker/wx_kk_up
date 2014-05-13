@@ -83,7 +83,7 @@ CAPTION "关于 "
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
-    LTEXT           "信帧卡口系统  1.0.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "信帧卡口系统  1.0.0.1 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
     LTEXT           "Copyright (C) 2014 @ 信帧电子技术（北京）有限公司",IDC_STATIC,42,58,174,12
     DEFPUSHBUTTON   "确定",IDOK,151,95,54,26,WS_GROUP
     LTEXT           "http://teleframe.cn",IDC_STATIC_HTTP_TELEFRAME_CN,42,36,148,8,SS_NOTIFY
@@ -174,13 +174,13 @@ BEGIN
     BEGIN
         BLOCK "080403a8"
         BEGIN
-            VALUE "CompanyName", "TODO: <公司名>"
-            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "CompanyName", "Teleframe"
+            VALUE "FileDescription", "无锡测试上传程序"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "wx_kk_up.exe"
-            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "LegalCopyright", "(C)  信帧电子技术（北京）有限公司  保留所有权利。"
             VALUE "OriginalFilename", "wx_kk_up.exe"
-            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductName", "无锡测试上传程序"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END

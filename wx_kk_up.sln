@@ -19,6 +19,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlog", "zlog\zlog.vcproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wxCore", "wxCore\wxCore.vcproj", "{47AE5BED-E584-4A59-9045-9A26BB2965AD}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{C53BE7DE-152F-4C2D-A8EE-2DDCB216F40C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wx_kk_up_service", "wx_kk_up_service\wx_kk_up_service.vcproj", "{41046787-330C-409D-B04B-BE6FEED406DF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InstanceConfig", "InstanceConfig\InstanceConfig.vcproj", "{D5BAFA24-A735-4E18-91CB-E3FBB8C72679}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -45,6 +51,16 @@ Global
 		{47AE5BED-E584-4A59-9045-9A26BB2965AD}.Debug|Win32.Build.0 = Debug|Win32
 		{47AE5BED-E584-4A59-9045-9A26BB2965AD}.Release|Win32.ActiveCfg = Release|Win32
 		{47AE5BED-E584-4A59-9045-9A26BB2965AD}.Release|Win32.Build.0 = Release|Win32
+		{C53BE7DE-152F-4C2D-A8EE-2DDCB216F40C}.Debug|Win32.ActiveCfg = Debug
+		{C53BE7DE-152F-4C2D-A8EE-2DDCB216F40C}.Release|Win32.ActiveCfg = Release
+		{41046787-330C-409D-B04B-BE6FEED406DF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{41046787-330C-409D-B04B-BE6FEED406DF}.Debug|Win32.Build.0 = Debug|Win32
+		{41046787-330C-409D-B04B-BE6FEED406DF}.Release|Win32.ActiveCfg = Release|Win32
+		{41046787-330C-409D-B04B-BE6FEED406DF}.Release|Win32.Build.0 = Release|Win32
+		{D5BAFA24-A735-4E18-91CB-E3FBB8C72679}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D5BAFA24-A735-4E18-91CB-E3FBB8C72679}.Debug|Win32.Build.0 = Debug|Win32
+		{D5BAFA24-A735-4E18-91CB-E3FBB8C72679}.Release|Win32.ActiveCfg = Release|Win32
+		{D5BAFA24-A735-4E18-91CB-E3FBB8C72679}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

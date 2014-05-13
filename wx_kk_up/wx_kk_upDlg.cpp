@@ -398,17 +398,18 @@ bool Cwx_kk_upDlg::AgentInit()
 	//时间同步
 	CString csSyncTime = "2014-03-02 10:25:50";
 	dzlog_notice("时间同步");
-	if( strcmp(systemConfig.runMode, "wx") ==0)
+	if( strcmp(systemConfig.runMode, "wx") ==0){
 		csSyncTime = m_agent.QuerySyncTime();//时间同步
-	csSyncTime = csSyncTime.Trim();
-	SetupDeviceTime(csSyncTime.GetBuffer(csSyncTime.GetLength())); //时间同步，设置本机时间
+		csSyncTime = csSyncTime.Trim();
+		if( !csSyncTime.IsEmpty() )
+			SetupDeviceTime(csSyncTime.GetBuffer(csSyncTime.GetLength())); //时间同步，设置本机时间
+	}
 	
 	//限速同步
 	char *cllx = "1";//车辆类型	0-大车，1-小车，2-其他车型
 	long lLimitSpeed = 40; 
 	if( strcmp(systemConfig.runMode, "wx") ==0){
 		lLimitSpeed = m_agent.QueryLimitSpeed(m_kkbh,m_fxlx,m_cdh, cllx);////限速同步
-		 
 	}
 	return true;
 }
@@ -742,6 +743,7 @@ void* ThreadProcessWatchedFiles(void* pParam)
 	TCHAR errorInfo[TF_MAX_PATH_LEN]={0};
 
 	char *imagePath = 0;
+	char plateImagePath[512]={0};
 	char ftpFilePath[512]={0};
 	char ftpPlateFilePath[512]={0};
 	char httpFilePath[512]={0};
@@ -782,10 +784,12 @@ void* ThreadProcessWatchedFiles(void* pParam)
 		ptr = strrstr(imagePath, PLATE_END);
 		if(ptr>0){
 			try{
-				delete 	imagePath;
+				*ptr = '\0';
+			//	delete 	imagePath;
 			}catch(...){	}
-			continue;
+		//	continue;
 		}
+		sprintf( plateImagePath, "%s"PLATE_END, imagePath);//车牌相对路径
 
 		sprintf(ftpFilePath, "%s\\%s", dlg->kkConfig.ftpPath, imagePath);// 过车特写图FTP
 		sprintf(httpFilePath, "%s\\%s", dlg->kkConfig.httpPath, imagePath);// 过车特写图HTTP
@@ -794,50 +798,45 @@ void* ThreadProcessWatchedFiles(void* pParam)
 		sprintf(httpPlateFilePath,  "%s\\%s"PLATE_END, dlg->kkConfig.httpPath, imagePath);//车牌图片HTTP
 
 		//check is file 
-		if( !FileUtil::FindFirstFileExists( ftpFilePath, FILE_ATTRIBUTE_DIRECTORY) )
+		if( FileUtil::FindFirstFileExists( ftpFilePath, FALSE) ||
+			FileUtil::FindFirstFileExists( ftpPlateFilePath, FALSE) )
 		{
 			//check can access
-			if(_access(ftpFilePath, R_OK) == 0){
+			if( ( _access(ftpFilePath, R_OK) == 0 ) ||
+				( _access(ftpPlateFilePath, R_OK) == 0 ) )
+			{
 				lRet = ParseVehicleFromPicture(dlg->kkConfig, imagePath, vehicleInfo);//通过图片名称获取车牌等信息
 				if(lRet != 1)
 					continue;
 
-				bExist = db.CheckImageExist(imagePath);//检查文件是否已经分析过,不存在则写入
+				bExist = db.CheckImageExist(imagePath, "tp1");//检查过车图片是否已经分析过,不存在则写入
 				if( ! bExist){
-					lRet = db.Add(&vehicleInfo);//写入数据库
-					if( lRet == true)
-					{
-CopyFile:
-						// 过车特写图
-						lRet = FileUtil::CopyFileEx(ftpFilePath, httpFilePath, true);
-						if(lRet==true){
-							dzlog_error("Copyed file from [%s] to [%s]", ftpFilePath, httpFilePath);
-							DeleteFile(ftpFilePath);//处理完成后删除FTP下的文件
-						}else{
-							dzlog_error("Copy file failed [GetLastError %s] from [%s] to [%s]", GetLastErrorInfo() , ftpFilePath, httpFilePath);
-						}
-CopyPlateFile:
-						//车牌图片
-						lRet = FileUtil::CopyFileEx(ftpPlateFilePath, httpPlateFilePath, true);
-						if(lRet==true){
-							dzlog_error("Copyed file from [%s] to [%s]", ftpFilePath, httpFilePath);
-							DeleteFile(ftpPlateFilePath);//处理完成后删除FTP下的文件
-						}else{
-							dzlog_error("Copy file failed [GetLastError %s] from [%s] to [%s]", GetLastErrorInfo() , ftpFilePath, httpFilePath);
-						}
-
-					}
-				}else{
-					if(FileUtil::FindFirstFileExists( httpFilePath, false))
-						DeleteFile(ftpFilePath);//处理完成后删除FTP下的文件
-					else
-						goto CopyFile;
-					if(FileUtil::FindFirstFileExists( httpPlateFilePath, false))
-						DeleteFile(ftpPlateFilePath);//处理完成后删除FTP下的文件
-					else
-						goto CopyPlateFile;
+					lRet = db.Add(&vehicleInfo);//不存在，则新增到数据库
 				}
-				//	flock();
+				//检查是否存在记录【根据车辆图片】
+				bExist = db.CheckImageExist(imagePath, "tp1");//新增后需要检查确保成功写入数据库
+				if(bExist){
+CopyFile:			// 过车特写图
+					lRet = FileUtil::CopyFileEx(ftpFilePath, httpFilePath, true);
+					if(lRet==true){
+						dzlog_error("Copyed file from [%s] to [%s]", ftpFilePath, httpFilePath);
+						DeleteFile(ftpFilePath);//处理完成后删除FTP下的文件
+					}else{
+						dzlog_error("Copy file failed [GetLastError %s] from [%s] to [%s]", GetLastErrorInfo() , ftpFilePath, httpFilePath);
+					}
+				}
+				//检查是否存在记录【根据车牌图片】
+				bExist = db.CheckImageExist(plateImagePath, "tztp");//新增后需要检查确保成功写入数据库
+				if(bExist){
+CopyPlateFile:		///车牌图片
+					lRet = FileUtil::CopyFileEx(ftpPlateFilePath, httpPlateFilePath, true);
+					if(lRet==true){
+						dzlog_error("Copyed file from [%s] to [%s]", ftpFilePath, httpFilePath);
+						DeleteFile(ftpPlateFilePath);//处理完成后删除FTP下的文件
+					}else{
+						dzlog_error("Copy file failed [GetLastError %s] from [%s] to [%s]", GetLastErrorInfo() , ftpFilePath, httpFilePath);
+					}
+				}
 			}else{
 				dzlog_error("cannot access file [%s]  [GetLastError %s] ", ftpFilePath,  GetLastErrorInfo());
 			}
@@ -970,7 +969,7 @@ void* ThreadProcessLast(void *pParam)
 			if(imagePath!=0 && dlg->m_images.size()<500)
 				dlg->m_images.push(imagePath);
 		}
-		Sleep(1000);
+		Sleep(10*1000);
 	}
 end:
 	sprintf(errorInfo, "[线程退出]余留文件处理线程 ThreadProcessLast PID : 0x%x GetLastError(%s)", pthread_self().p, GetLastErrorInfo());

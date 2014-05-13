@@ -56,7 +56,7 @@ public:
 	int CloseDB(sqlite3  *p=0);
 
 	//根据imagePath查询是否已经存在
-	bool CheckImageExist(char *imagePath);
+	bool CheckImageExist(char *imagePath, char* colName);
 
 	//写入数据库
 	long Add(VehicleInfo *vehicleInfo);

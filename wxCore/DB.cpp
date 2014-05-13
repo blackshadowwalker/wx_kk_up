@@ -68,8 +68,8 @@ int  TFDB::CloseDB(sqlite3  *p )
 }
 
 
-//根据imagePath查询是否已经存在
-bool  TFDB::CheckImageExist(char *imagePath)
+//根据imagePath查询是否已经存在,传入数据库表列的名称如 tp1 | tp2 | tp3 | tztp etc.
+bool  TFDB::CheckImageExist(char *imagePath, char* colName)
 {
 	pSqlite3DB = OpenDB();
 	if(pSqlite3DB==NULL)
@@ -78,7 +78,7 @@ bool  TFDB::CheckImageExist(char *imagePath)
 	sqlite3_stmt  *stmt = 0 ;
 
 	char strsql[MAX_SQL]={0};
-	sprintf(strsql, "select * from "TABLE_NAME" where tp1=?" ) ;
+	sprintf(strsql, "select * from "TABLE_NAME" where %s=?", colName ) ;
 
 	dzlog_debug("strsql = %s \n", strsql);
 		
@@ -103,12 +103,13 @@ bool  TFDB::CheckImageExist(char *imagePath)
 	//CloseDB(pSqlite3DB);
 	if(ret != SQLITE_DONE)
 	{  
-		dzlog_error("sqlite3_step faile \n" );
+		long error = GetLastError();
+		dzlog_error("sqlite3_step faile : GetLastError: %d", error );
 		return -1;
 	}      
 	
 	return (ret == SQLITE_ROW);
-	return false;
+
 }
 
 //写入数据库

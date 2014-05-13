@@ -110,12 +110,12 @@ BEGIN
     PUSHBUTTON      "浏览...",IDC_BT_BROWSER_SERVER_EXE,167,142,50,14
     COMBOBOX        IDC_SERVICE_SELECT,62,23,95,78,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     RTEXT           "服务选择:",IDC_STATIC,26,25,31,8
-    PUSHBUTTON      "HTTP服务安装",IDC_BT_INSTALL_HTTP,236,24,50,14
+    PUSHBUTTON      "HTTP服务安装",IDC_BT_INSTALL_HTTP,238,51,50,14
     RTEXT           "传入参数:",IDC_STATIC,24,65,31,8
     EDITTEXT        IDC_SERVICE_PARAM,62,62,95,14,ES_AUTOHSCROLL
     GROUPBOX        "HTTP服务管理",IDC_STATIC,221,7,93,76
     GROUPBOX        "卡口数据上传监控服务",IDC_STATIC,222,86,92,97
-    PUSHBUTTON      "HTTP配置",IDC_BT_HTTP_CONFIG,236,46,50,14
+    PUSHBUTTON      "HTTP配置",IDC_BT_HTTP_CONFIG,236,25,50,14
 END
 
 
@@ -141,13 +141,13 @@ BEGIN
     BEGIN
         BLOCK "080403a8"
         BEGIN
-            VALUE "CompanyName", "TODO: <公司名>"
-            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "CompanyName", "Teleframe"
+            VALUE "FileDescription", "服务管理程序"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "InstanceConfig.exe"
-            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "LegalCopyright", "(C)  信帧电子技术（北京）有限公司  保留所有权利。"
             VALUE "OriginalFilename", "InstanceConfig.exe"
-            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductName", "服务管理程序"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END

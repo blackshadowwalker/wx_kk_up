@@ -1,4 +1,225 @@
-﻿
+﻿Revision: 38
+Author: karl.li
+Date: 2014年5月12日 12:45:06
+Message:
+修改wx_kk_up.ini
+----
+Modified : /bin/wx_kk_up.db
+Modified : /bin/wx_kk_up.ini
+Modified : /bin/信帧卡口系统-无锡测试使用手册.docx
+
+Revision: 37
+Author: karl.li
+Date: 2014年5月10日 17:40:26
+Message:
+修改程序描述信息
+----
+Modified : /InstanceConfig/InstanceConfig.aps
+Modified : /InstanceConfig/InstanceConfig.rc
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.rc
+
+Revision: 36
+Author: karl.li
+Date: 2014年5月10日 14:59:32
+Message:
+修改SETUP详单
+----
+Modified : /Setup/Setup.vdproj
+
+Revision: 35
+Author: karl.li
+Date: 2014年5月9日 17:56:16
+Message:
+修改时间同步为正确的代码，获取空则不更新
+----
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 34
+Author: karl.li
+Date: 2014年5月9日 17:51:28
+Message:
+修改函数  CheckImageExist 的参数
+----
+Modified : /Setup/Setup.vdproj
+Modified : /bin/wx_kk_up.db
+Modified : /svn.log.txt
+Modified : /wxCore/DB.cpp
+Modified : /wxCore/DB.h
+
+Revision: 33
+Author: karl.li
+Date: 2014年5月9日 17:33:12
+Message:
+修复bug: 
+bug描述:
+1.数据信息未添加，过车图片已经到http目录，但车牌图片没有成功写入http目录
+2.数据信息已添加，过车图片已经到http目录，但车牌图片没有成功写入http目录
+3.数据信息已添加，过车图片没有成功写入到http目录，但车牌图片没有成功写入http目录
+bug原因:
+图片写入的慢或数据库写入失败
+----
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 32
+Author: karl.li
+Date: 2014年5月9日 15:27:51
+Message:
+完成HTTP安装
+下一步：
+实现打包安装程序
+----
+Modified : /InstanceConfig/InstanceConfig.aps
+Modified : /InstanceConfig/InstanceConfig.rc
+Modified : /InstanceConfig/InstanceConfigDlg.cpp
+Modified : /InstanceConfig/InstanceConfigDlg.h
+Modified : /InstanceConfig/resource.h
+Modified : /bin/wx_kk_up.db
+Modified : /bin/wx_kk_up.ini
+Modified : /bin/信帧卡口系统-无锡测试使用手册.docx
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+
+Revision: 31
+Author: karl.li
+Date: 2014年5月9日 12:06:16
+Message:
+已经合并2个服务操作完成，但是http服务安装失败
+----
+Modified : /InstanceConfig/InstanceConfig.aps
+Modified : /InstanceConfig/InstanceConfig.rc
+Modified : /InstanceConfig/InstanceConfig.vcproj
+Modified : /InstanceConfig/InstanceConfigDlg.cpp
+Modified : /InstanceConfig/InstanceConfigDlg.h
+Modified : /InstanceConfig/resource.h
+Modified : /svn.log.txt
+Modified : /third/include/KService.cpp
+
+Revision: 30
+Author: karl.li
+Date: 2014年5月9日 10:53:54
+Message:
+1.完成将服务写成服务管理类,传入名称即可实现安装、卸载、开启、关闭、状态检查
+2.完成wx_kk_up_service服务的修改，使用服务管理类进行服务的操作
+下一步：
+1.基于服务管理类，实现http服务安装、卸载、开启、关闭、状态检查
+----
+Modified : /InstanceConfig/InstanceConfig.aps
+Modified : /InstanceConfig/InstanceConfig.rc
+Modified : /InstanceConfig/InstanceConfig.vcproj
+Modified : /InstanceConfig/InstanceConfigDlg.cpp
+Modified : /InstanceConfig/InstanceConfigDlg.h
+Modified : /InstanceConfig/resource.h
+Added : /bin/HTAgent.dll
+Added : /bin/ShareModule.dll
+Added : /bin/msvcr90.dll
+Modified : /third/include/FileUtil.cpp
+Modified : /third/include/FileUtil.h
+Added : /third/include/KService.cpp
+Added : /third/include/KService.h
+Modified : /third/include/TCode.cpp
+Modified : /third/include/TCode.h
+Modified : /wx_kk_up_service/main.cpp
+Modified : /wx_kk_up_service/wx_kk_service.cpp
+Modified : /wx_kk_up_service/wx_kk_service.h
+
+Revision: 29
+Author: karl.li
+Date: 2014年5月8日 11:37:21
+Message:
+1.完成共享控件dll的注册和卸载，以及检测
+2.wx_kk_up加入检测控件dll是否已经注册
+下一步：
+1.将服务写成服务管理类,传入名称即可实现安装、卸载、开启、关闭、状态检查
+2.在实现服务管理类后，实现http服务安装、卸载、开启、关闭、状态检查
+----
+Modified : /InstanceConfig/InstanceConfig.aps
+Modified : /InstanceConfig/InstanceConfig.rc
+Modified : /InstanceConfig/InstanceConfig.vcproj
+Modified : /InstanceConfig/InstanceConfigDlg.cpp
+Modified : /InstanceConfig/InstanceConfigDlg.h
+Modified : /InstanceConfig/resource.h
+Modified : /Setup/Setup.vdproj
+Modified : /bin/wx_kk_up.db
+Modified : /third/include/FileUtil.cpp
+Modified : /third/include/FileUtil.h
+Modified : /third/include/TCode.cpp
+Modified : /third/include/TCode.h
+Modified : /wx_kk_up/wx_kk_up.aps
+Modified : /wx_kk_up/wx_kk_up.cpp
+Modified : /wx_kk_up/wx_kk_up.rc
+
+Revision: 28
+Author: karl.li
+Date: 2014年5月7日 19:20:25
+Message:
+1.add subproject wx_kk_up_service
+2.add subproject InstanceConfig
+3.add subproject Setup
+----
+Added : /InstanceConfig
+Added : /InstanceConfig/InstanceConfig.aps
+Added : /InstanceConfig/InstanceConfig.rc
+Added : /InstanceConfig/InstanceConfig.vcproj
+Added : /InstanceConfig/InstanceConfigDlg.cpp
+Added : /InstanceConfig/InstanceConfigDlg.h
+Added : /InstanceConfig/resource.h
+Added : /Setup
+Added : /Setup/Setup.vdproj
+Added : /InstanceConfig/InstanceConfig.cpp
+Added : /InstanceConfig/InstanceConfig.h
+Added : /InstanceConfig/MyService.cpp
+Added : /InstanceConfig/MyService.h
+Added : /InstanceConfig/ReadMe.txt
+Added : /InstanceConfig/res
+Added : /InstanceConfig/res/InstanceConfig.ico
+Added : /InstanceConfig/res/InstanceConfig.rc2
+Added : /InstanceConfig/stdafx.cpp
+Added : /InstanceConfig/stdafx.h
+Added : /InstanceConfig/targetver.h
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /wx_kk_up.sln
+Added : /wx_kk_up_service
+Added : /wx_kk_up_service/main.cpp
+Added : /wx_kk_up_service/wx_kk_service.cpp
+Added : /wx_kk_up_service/wx_kk_service.h
+Added : /wx_kk_up_service/wx_kk_up_service.vcproj
+
+Revision: 27
+Author: karl.li
+Date: 2014年5月7日 14:53:08
+Message:
+
+----
+Modified : /bin/wx_kk_up.db
+Modified : /wx_kk_up/wx_kk_up.vcproj
+Modified : /wx_kk_up/wx_kk_upDlg.cpp
+Modified : /mysqllib/mysqllib.vcproj
+
+Revision: 26
+Author: karl.li
+Date: 2014年5月5日 17:24:03
+Message:
+add AutoUpdater.cpp & unzip.cpp
+----
+Modified : /Readme.txt
+Modified : /svn.log.txt
+Added : /third/include/AutoUpdater.cpp
+Added : /third/include/AutoUpdater.h
+Added : /third/include/unzip.cpp
+Added : /third/include/unzip.h
+
+Revision: 25
+Author: karl.li
+Date: 2014年5月5日 15:21:40
+Message:
+modify svn.log.txt
+----
+Modified : /svn.log.txt
+
+
 Revision: 24
 Author: karl.li
 Date: 2014年5月5日 15:20:28
